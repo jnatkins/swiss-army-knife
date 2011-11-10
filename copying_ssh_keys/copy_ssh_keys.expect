@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+
+set hostnum [lindex $argv 0]
+set password "password"
+spawn ssh-copy-id -i /home/natty/.ssh/id_rsa.pub root@host$hostnum.companyname.com
+expect -re "root.*password:.*"
+send "$password\r"
+interact
+
